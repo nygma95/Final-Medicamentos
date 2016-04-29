@@ -47,7 +47,7 @@ class TableViewControllerHistMedicamentos: UITableViewController {
         {
             let iN = resultados?.count
             let iNum = 0
-            for med : HistorialMedicamentos in resultados!{
+            for med : HistorialMedicamentos in resultados!.reverse(){
                 listaMedicamentos.append(med)
 
             }
