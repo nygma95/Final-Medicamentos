@@ -15,7 +15,7 @@ protocol ProtocoloAgregarMedicamento {
 }
 
 protocol ProtocoloEditarMedicamento {
-    func editarMedicamento(nombre : String, cantidadDisp : Int, dosis : Int, periodo : Int, unidad : String , indicaciones : String, horaIni : NSDate, foto: NSData) -> Void
+    func editarMedicamento(nombre : String, cantidadDisp : Int, dosis : Int, periodo : Int, unidad : String , indicaciones : String, horaIni : NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!) -> Void
     func quitaVistaE() -> Void
 }
 
@@ -117,7 +117,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             let hora = pickHora.date
             let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
             
-            delegadoEditar!.editarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto)
+            delegadoEditar!.editarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias)
             delegadoEditar?.quitaVistaE()
         }
         else if bEditar == false
@@ -209,7 +209,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
         
         scrollView.contentSize = vieView.frame.size
         
-        if indice != nil
+        if indice != nil // si edita medicamento
         {
             let entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
             
@@ -239,6 +239,29 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
                 txtDosis.text = String(resultados![indice].dosis!)
                 lbUnidadCant.text = resultados![indice].tipo
                 txtvIndicaciones.text = resultados![indice].indicaciones
+                
+                let switchText = resultados![indice].diaaPartir
+                
+                if switchText == "Hoy"
+                {
+                    swDiaPartir.on = false
+                }
+                else{
+                    swDiaPartir.on = true
+                }
+                
+                let xdias = Int(resultados![indice].porxDias!)
+                switch xdias
+                {
+                case 7 : iOpcionDias = 0
+                case 14 : iOpcionDias = 1
+                case 21 : iOpcionDias = 2
+                case 28 : iOpcionDias = 3
+                case 2147483647 : iOpcionDias = 4
+                default : iOpcionDias = 7
+                }
+                pickerDias.selectRow(iOpcionDias, inComponent: 0, animated: true)
+                
                 
                 let horas = Int(resultados![indice].periodo!)
                 switch horas

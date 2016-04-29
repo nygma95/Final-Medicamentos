@@ -136,7 +136,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     
     // MARK: - Protocolos
     
-    func editarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData) {
+    func editarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int! ) {
         
         // hago el fetch del objeto medicamento
         let entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
@@ -169,6 +169,8 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         resultados![indice].indicaciones = indicaciones
         resultados![indice].hora = horaIni
         resultados![indice].foto = foto
+        resultados![indice].diaaPartir = diaaPartir
+        resultados![indice].porxDias = porxDias
         
         appDelegate.saveContext()
         tableView.reloadData()
