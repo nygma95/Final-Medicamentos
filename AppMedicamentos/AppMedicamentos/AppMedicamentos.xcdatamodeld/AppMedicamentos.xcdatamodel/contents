@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="Alarma" representedClassName=".Alarma" syncable="YES">
+        <attribute name="dateTime" attributeType="Date" syncable="YES"/>
+        <attribute name="tomado" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="HistorialMedicamentos" representedClassName=".HistorialMedicamentos" syncable="YES">
+        <attribute name="dosis" attributeType="String" syncable="YES"/>
+        <attribute name="fechaHora" attributeType="Date" syncable="YES"/>
+        <attribute name="nombre" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Medicamento" representedClassName=".Medicamento" syncable="YES">
+        <attribute name="cantDisp" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="diaaPartir" attributeType="String" syncable="YES"/>
+        <attribute name="dosis" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="foto" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="hora" attributeType="Date" syncable="YES"/>
+        <attribute name="indicaciones" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" attributeType="String" syncable="YES"/>
+        <attribute name="periodo" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="porxDias" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tipo" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Usuario" representedClassName=".Usuario" syncable="YES">
+        <attribute name="apellidoResponsable" attributeType="String" syncable="YES"/>
+        <attribute name="apellidoUsuario" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="nombreResponsable" attributeType="String" syncable="YES"/>
+        <attribute name="nombreUsuario" attributeType="String" syncable="YES"/>
+        <attribute name="telefono" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Alarma" positionX="-36" positionY="72" width="128" height="73"/>
+        <element name="HistorialMedicamentos" positionX="-252" positionY="171" width="128" height="90"/>
+        <element name="Medicamento" positionX="-459" positionY="81" width="128" height="195"/>
+        <element name="Usuario" positionX="-225" positionY="180" width="128" height="135"/>
+    </elements>
+</model>
