@@ -1,58 +1,23 @@
 //
-//  TableViewControllerHistMedicamentos.swift
+//  TableViewControllerHistGlucosaPresion.swift
 //  AppMedicamentos
 //
-//  Created by ArturoNajera on 4/28/16.
+//  Created by alumno on 29/04/16.
 //  Copyright © 2016 ivanarturo. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-class TableViewControllerHistMedicamentos: UITableViewController {
-    
-
-    
-    var listaMedicamentos = [HistorialMedicamentos]()
-    var indice: Int = 0
-    
-    let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
-    let fetchRequest = NSFetchRequest(entityName: "HistorialMedicamentos")
+class TableViewControllerHistGlucosaPresion: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
-        let entityDescription = NSEntityDescription.entityForName("HistorialMedicamentos", inManagedObjectContext: contexto)
-        
-        let request = NSFetchRequest()
-        request.entity = entityDescription
-        
-        //el predicado es la consulta
-        let  predicado = NSPredicate(value: true)
-        
-        //agregar predicado a request
-        request.predicate = predicado
-        
-        var resultados : [HistorialMedicamentos]?
-        
-        contexto.performBlockAndWait() {
-            do {
-                resultados = try! self.contexto.executeFetchRequest(request) as? [HistorialMedicamentos]
-            }
-        }
-        
-        if resultados?.count > 0
-        {
-            let iN = resultados?.count
-            let iNum = 0
-            for med : HistorialMedicamentos in resultados!.reverse(){
-                listaMedicamentos.append(med)
-
-            }
-        }
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,40 +29,31 @@ class TableViewControllerHistMedicamentos: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return listaMedicamentos.count
+        return 0
     }
-    
-    
+
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellView
-        cell.lbNombre.text = listaMedicamentos[indexPath.row].nombre
-        cell.lbDosis.text = listaMedicamentos[indexPath.row].dosis
-        
-        let date = listaMedicamentos[indexPath.row].fechaHora!
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year, .Hour, .Minute], fromDate: date)
-        
-        let year =  String(components.year)
-        let month = String(components.month)
-        let day = String(components.day)
-        let hour = String(components.hour)
-        let minute = String(components.minute)
-        
-        cell.lbFecha.text = day + "/" + month + "/" + year + "   " + hour + ":" + minute
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
+    */
 
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
+    */
 
     /*
     // Override to support editing the table view.
