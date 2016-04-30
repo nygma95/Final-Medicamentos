@@ -7,17 +7,50 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewControllerHistGlucosaPresion: UITableViewController {
 
+    var listaRegistros = [HistorialGlucosaPresion]()
+    var indice: Int = 0
+    
+    let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    let fetchRequest = NSFetchRequest(entityName: "HistorialGlucosaPresion")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let entityDescription = NSEntityDescription.entityForName("HistorialGlucosaPresion", inManagedObjectContext: contexto)
+        
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        
+        //el predicado es la consulta
+        let  predicado = NSPredicate(value: true)
+        
+        //agregar predicado a request
+        request.predicate = predicado
+        
+        var resultados : [HistorialGlucosaPresion]?
+        
+        contexto.performBlockAndWait() {
+            do {
+                resultados = try! self.contexto.executeFetchRequest(request) as? [HistorialGlucosaPresion]
+            }
+        }
+        
+        if resultados?.count > 0
+        {
+            let iN = resultados?.count
+            let iNum = 0
+            for med : HistorialGlucosaPresion in resultados!.reverse(){
+                listaRegistros.append(med)
+                
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +62,38 @@ class TableViewControllerHistGlucosaPresion: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return listaRegistros.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = listaRegistros[indexPath.row].tipoRegistro! + listaRegistros[indexPath.row].cantidad!
 
+        
+        let date = listaRegistros[indexPath.row].fechaHora!
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year, .Hour, .Minute], fromDate: date)
+        
+        let year =  String(components.year)
+        let month = String(components.month)
+        let day = String(components.day)
+        let hour = String(components.hour)
+        var minute = String(components.minute)
+        if Int(minute) < 10{
+            minute = "0" + minute
+        }
+        
+        cell.detailTextLabel!.text = day + "/" + month + "/" + year + "   " + hour + ":" + minute
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

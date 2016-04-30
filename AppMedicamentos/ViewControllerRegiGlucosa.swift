@@ -7,12 +7,84 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewControllerRegiGlucosa: UIViewController {
 
+    @IBOutlet weak var swOpcion: UISwitch!
+    @IBOutlet weak var lbInstruccion: UILabel!
+    @IBOutlet weak var lbUnidad: UILabel!
+    @IBOutlet weak var lbEjemplo: UILabel!
+    @IBOutlet weak var txtCantidad: UITextField!
+    
+    @IBAction func swSeleccion(sender: UISwitch) {
+        
+        if sender.on == true
+        {
+            lbInstruccion.text = "Registrar Glucosa"
+            lbUnidad.text = "mg/dl"
+            lbEjemplo.text = "Ejemplo: 80 mg/dl"
+        }
+        else
+        {
+            lbInstruccion.text = "Registrar Presión"
+            lbUnidad.text = "mmHg"
+            lbEjemplo.text = "Ejemplo: 120/80 mmHg"
+        }
+    }
+        let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+   
+    @IBAction func btRegistrar(sender: UIButton) {
+        
+        
+        let entityDescription = NSEntityDescription.entityForName("HistorialGlucosaPresion", inManagedObjectContext: contexto)
+        
+        var canti = txtCantidad.text
+        let fecha = NSDate()
+        var tipoRegistro : String
+        if swOpcion.on == false{
+            tipoRegistro = "Presión Arterial: "
+            canti = canti! + " mmHg"
+        }
+        else{
+            tipoRegistro = "Glucosa: "
+            canti = canti! + " mg/dl"
+        }
+        
+        if canti == nil
+        {
+            return
+        }
+        
+        contexto.performBlockAndWait() {
+            let cantidad = HistorialGlucosaPresion(entity: entityDescription!, insertIntoManagedObjectContext: self.contexto)
+            cantidad.cantidad = canti
+            cantidad.fechaHora = fecha
+            cantidad.tipoRegistro = tipoRegistro
+            
+        }
+        
+        //guarda el contexto
+        contexto.performBlockAndWait() {
+            if self.contexto.hasChanges
+            {
+                do {
+                    try self.contexto.save()
+                    
+                }
+                catch {
+                    self.lbEjemplo.text = "ERROR"
+                }
+            }
+        }
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Registro Glucosa/Presión Arterial"
         // Do any additional setup after loading the view.
     }
 

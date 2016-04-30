@@ -4,6 +4,11 @@
         <attribute name="dateTime" attributeType="Date" syncable="YES"/>
         <attribute name="tomado" attributeType="Boolean" syncable="YES"/>
     </entity>
+    <entity name="HistorialGlucosaPresion" representedClassName=".HistorialGlucosaPresion" syncable="YES">
+        <attribute name="cantidad" attributeType="String" syncable="YES"/>
+        <attribute name="fechaHora" attributeType="Date" syncable="YES"/>
+        <attribute name="tipoRegistro" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="HistorialMedicamentos" representedClassName=".HistorialMedicamentos" syncable="YES">
         <attribute name="dosis" attributeType="String" syncable="YES"/>
         <attribute name="fechaHora" attributeType="Date" syncable="YES"/>
@@ -34,5 +39,6 @@
         <element name="HistorialMedicamentos" positionX="-252" positionY="171" width="128" height="90"/>
         <element name="Medicamento" positionX="-459" positionY="81" width="128" height="195"/>
         <element name="Usuario" positionX="-225" positionY="180" width="128" height="135"/>
+        <element name="HistorialGlucosaPresion" positionX="-252" positionY="171" width="128" height="90"/>
     </elements>
 </model>

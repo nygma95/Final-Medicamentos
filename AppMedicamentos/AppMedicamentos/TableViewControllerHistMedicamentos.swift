@@ -86,7 +86,10 @@ class TableViewControllerHistMedicamentos: UITableViewController {
         let month = String(components.month)
         let day = String(components.day)
         let hour = String(components.hour)
-        let minute = String(components.minute)
+        var minute = String(components.minute)
+        if Int(minute) < 10{
+            minute = "0" + minute
+        }
         
         cell.lbFecha.text = day + "/" + month + "/" + year + "   " + hour + ":" + minute
         return cell
