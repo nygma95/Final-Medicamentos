@@ -16,10 +16,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //Actions
+        var firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        firstAction.identifier = "First_Action"
+        firstAction.title = "First Action"
+        firstAction.activationMode = UIUserNotificationActivationMode.Foreground
+        firstAction.destructive = false
+        firstAction.authenticationRequired = false
+        
+        //category
+        var firstCategory : UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        firstCategory.identifier = "First_Cat"
+        let defaultActions:NSArray = [firstAction]
+        let minimalActions:NSArray = [firstAction]
+        
+        firstCategory.setActions(defaultActions as! [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
+        firstCategory.setActions(minimalActions as! [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
+        
+        //NSSet of all cats
+        
+        let categories: NSSet = NSSet(object: firstCategory)
+        
+        
+        let types: UIUserNotificationType = UIUserNotificationType.Badge
+        let mySettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
+        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
+        
         return true
     }
-
+    
+    // Notification handler
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        if identifier == "First_Action"
+        {
+            print("estoy en app delegate" + NSDate().description)
+            print (notification.description)
+            NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil, userInfo: notification.userInfo)
+        }
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

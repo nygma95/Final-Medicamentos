@@ -12,14 +12,20 @@ import CoreData
 class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMedicamento, ProtocoloEditarMedicamento {
 
     var listaMedicamentos = [Medicamento]()
+    var aux: Medicamento!
     var indice: Int = 0
     
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    let app: UIApplication = UIApplication.sharedApplication().self
     
     let fetchRequest = NSFetchRequest(entityName: "Medicamento")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveSegue:", name: "actionOnePressed", object: nil)
+        
         self.title = "Medicamentos Programados"
         
         let entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
@@ -125,12 +131,22 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             viewM.tableDelegado = self
             indice = indexPath!.row
         }
+        else if segue.identifier == "alarma"
+        {
+            let viewA = segue.destinationViewController as! ViewControllerNotificacion
+            viewA.medi = aux
+        }
         else
         {
             let view = segue.destinationViewController as! ViewControllerMedicamento
             view.delegadoAgregar = self
             view.bEditar = false
         }
+    }
+    
+    @IBAction func unwindAlarma(sender : UIStoryboardSegue)
+    {
+        
     }
  
     
@@ -209,6 +225,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
                 do {
                     try self.contexto.save()
                     self.listaMedicamentos.append(aux)
+                    self.crearAlarma(aux, alarma: aux.hora!)
                     
                 }
                 catch {
@@ -223,5 +240,45 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     func quitaVista() {
         navigationController?.popViewControllerAnimated(true)
     }
-
+    
+    
+    // Notificaciones
+    
+    func crearAlarma(medicina: Medicamento, alarma: NSDate)
+    {
+        var notification : UILocalNotification = UILocalNotification()
+        notification.category = "First_Cat"
+        notification.alertBody = "Hora de tomar Medicamento"
+        notification.fireDate = alarma
+        notification.userInfo = ["nombre": medicina.nombre!]
+        app.scheduleLocalNotification(notification)
+    }
+    
+    func moveSegue(notification : NSNotification) {
+        let checa = NSDate()
+        print("hora")
+        print(checa)
+        let player: Medicamento!
+        for player in listaMedicamentos
+        {
+            print("entro al FOR del handler")
+            //print(player.fecha)
+            //if player.fecha == checa
+            //print(player.nombre)
+            //print("hola")
+            //print(notification.description)
+            let z:  [NSObject: AnyObject] = notification.userInfo!
+            var x = z as! NSDictionary
+            var y = x["nombre"] as! String
+            //print (x)
+            //if notification.userInfo!["nombre"]! as! String == player.nombre
+            if y == player.nombre
+            {
+                print("entro al if")
+                aux = player
+            }
+        }
+        self.performSegueWithIdentifier("alarma", sender: nil)
+    }
+    
 }
