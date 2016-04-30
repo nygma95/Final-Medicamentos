@@ -135,6 +135,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         {
             let viewA = segue.destinationViewController as! ViewControllerNotificacion
             viewA.medi = aux
+            viewA.tabla = self
         }
         else
         {
@@ -146,7 +147,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     
     @IBAction func unwindAlarma(sender : UIStoryboardSegue)
     {
-        
+        tableView.reloadData()
     }
  
     
@@ -240,7 +241,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     func quitaVista() {
         navigationController?.popViewControllerAnimated(true)
     }
-    
+   
     
     // Notificaciones
     
@@ -252,6 +253,8 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         notification.fireDate = alarma
         notification.userInfo = ["nombre": medicina.nombre!]
         app.scheduleLocalNotification(notification)
+        print("Se creo una alarma")
+        print(notification.description)
     }
     
     func moveSegue(notification : NSNotification) {

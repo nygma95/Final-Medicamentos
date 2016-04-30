@@ -22,6 +22,8 @@ class ViewControllerNotificacion: UIViewController {
     var imgFoto: UIImage!
     var tomado: Bool = false
     
+    var tabla : TableViewControllerMedicamentos!
+    
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
     @IBAction func actionSwitch(sender: UISwitch) {
@@ -40,7 +42,7 @@ class ViewControllerNotificacion: UIViewController {
     @IBAction func actGuardar(sender: UIButton) {
         if tomado
         {
-            let entityDescription = NSEntityDescription.entityForName("HistorialMedicamentos", inManagedObjectContext: contexto)
+            var entityDescription = NSEntityDescription.entityForName("HistorialMedicamentos", inManagedObjectContext: contexto)
             
             let nomMed = medi.nombre
             let dosis = lblDosis.text
@@ -73,6 +75,39 @@ class ViewControllerNotificacion: UIViewController {
                     }
                 }
             }
+            
+            entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
+            
+            let request = NSFetchRequest()
+            request.entity = entityDescription
+            
+            //el predicado es la consulta
+            let  predicado = NSPredicate(format: "nombre = %@", nomMed!)
+            
+            //agregar predicado a request
+            request.predicate = predicado
+            
+            var resultados : [Medicamento]?
+            
+            contexto.performBlockAndWait() {
+                do {
+                    resultados = try! self.contexto.executeFetchRequest(request) as? [Medicamento]
+                }
+            }
+            
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            print("fecha antes")
+            print(medi.hora)
+            let nuevo = medi.hora!.dateByAddingTimeInterval(3600*Double(medi.periodo!))
+            print("fecha después")
+            print(nuevo)
+            resultados![0].hora = nuevo
+            resultados![0].cantDisp = Int(resultados![0].cantDisp!) - Int(resultados![0].dosis!)
+            
+            appDelegate.saveContext()
+            
+            tabla.crearAlarma(medi, alarma: nuevo)
         }
         navigationController?.popViewControllerAnimated(true)
     }
