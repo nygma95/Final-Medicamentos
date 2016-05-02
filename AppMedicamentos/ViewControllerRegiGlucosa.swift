@@ -51,11 +51,15 @@ class ViewControllerRegiGlucosa: UIViewController {
             canti = canti! + " mg/dl"
         }
         
-        if canti == nil
+        if txtCantidad.text == ""
         {
-            return
+            let alert = UIAlertController(title: "Falta información", message: "Por favor, llene el campo para continuar", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        
+        else{
         contexto.performBlockAndWait() {
             let cantidad = HistorialGlucosaPresion(entity: entityDescription!, insertIntoManagedObjectContext: self.contexto)
             cantidad.cantidad = canti
@@ -78,6 +82,7 @@ class ViewControllerRegiGlucosa: UIViewController {
             }
         }
         navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     

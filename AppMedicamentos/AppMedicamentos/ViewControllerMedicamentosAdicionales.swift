@@ -33,10 +33,16 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
         let fecha = NSDate()
         let unidad = arrUnidades[iOpcionUnidades]
         
-        if nomMed == nil || dosis == nil
+        if nomMed == "" || dosis == ""
         {
-            return
+            let alert = UIAlertController(title: "Falta información", message: "Por favor, llene todos los campos para continuar", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
+        
+        else{
         
         contexto.performBlockAndWait() {
             let medicamento = HistorialMedicamentos(entity: entityDescription!, insertIntoManagedObjectContext: self.contexto)
@@ -59,7 +65,8 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
                 }
             }
         }
-      navigationController?.popViewControllerAnimated(true)  
+      navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     
