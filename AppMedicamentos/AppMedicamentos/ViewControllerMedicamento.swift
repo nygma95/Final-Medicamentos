@@ -171,10 +171,31 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
 ////////Seleccionar imagen
     @IBAction func selectImage(sender: AnyObject) {
         
-        let photoPicker = UIImagePickerController()
+        // create the alert
+        let alert = UIAlertController(title: "Elija una opción", message: "Agregue una foto de su galería o tome una foto desde la aplicación", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Tomar Foto", style: UIAlertActionStyle.Default, handler: { action in
+            let photoPicker = UIImagePickerController()
+            photoPicker.delegate = self
+            photoPicker.sourceType = .Camera
+            self.presentViewController(photoPicker, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Galería de fotos", style: UIAlertActionStyle.Default, handler: { action in
+            let photoPicker = UIImagePickerController()
+            photoPicker.delegate = self
+            photoPicker.sourceType = .PhotoLibrary
+            self.presentViewController(photoPicker, animated: true, completion: nil)
+        }))
+        
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        /*let photoPicker = UIImagePickerController()
         photoPicker.delegate = self
         photoPicker.sourceType = .PhotoLibrary
-        self.presentViewController(photoPicker, animated: true, completion: nil)
+        self.presentViewController(photoPicker, animated: true, completion: nil)*/
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
