@@ -91,6 +91,13 @@ class ViewControllerRegiGlucosa: UIViewController {
         super.viewDidLoad()
         title = "Registro Glucosa/Presión Arterial"
         // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerMedicamento.quitaTeclado))
+        
+        self.view.addGestureRecognizer(tap)
+    }
+    func quitaTeclado()
+    {
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {

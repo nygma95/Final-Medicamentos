@@ -77,9 +77,19 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
         pickerUnidad.delegate = self
         pickerUnidad.dataSource = self
         pickerUnidad.selectRow(0, inComponent: 0, animated: true)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerMedicamentosAdicionales.quitaTeclado))
+        
+        self.view.addGestureRecognizer(tap)
 
         
     }
+    
+    func quitaTeclado()
+    {
+        view.endEditing(true)
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
