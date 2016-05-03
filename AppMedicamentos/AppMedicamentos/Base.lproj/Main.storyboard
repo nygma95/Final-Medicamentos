@@ -57,20 +57,20 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-Je-wy3">
-                                <rect key="frame" x="75" y="641" width="51" height="31"/>
+                                <rect key="frame" x="75" y="630" width="51" height="31"/>
                                 <color key="tintColor" red="1" green="0.1059530895" blue="0.13428444950000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="actionSwitch:" destination="RCm-IH-Y0O" eventType="valueChanged" id="c0c-mL-Cug"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No lo tomé" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu6-95-zF3">
-                                <rect key="frame" x="137" y="645" width="98" height="24"/>
+                                <rect key="frame" x="137" y="634" width="98" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKu-Dc-cNN">
-                                <rect key="frame" x="271" y="639" width="72" height="36"/>
+                                <rect key="frame" x="271" y="628" width="72" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Guardar"/>
                                 <connections>
@@ -933,6 +933,6 @@
         <image name="camara" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aXr-BY-pvV"/>
+        <segue reference="8da-pN-kR4"/>
     </inferredMetricsTieBreakers>
 </document>

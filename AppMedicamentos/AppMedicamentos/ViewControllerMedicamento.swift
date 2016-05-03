@@ -132,8 +132,8 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             else{
                 let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
                 
-                delegadoAgregar!.agregarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
-                delegadoAgregar?.quitaVista()
+                delegadoEditar!.editarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
+                delegadoEditar?.quitaVistaE()
             }
         }
         else if bEditar == false
