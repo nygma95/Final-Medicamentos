@@ -13,6 +13,8 @@
 		69A0E9031CD5706500CDE876 /* HistorialGlucosaPresion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0E9011CD5706500CDE876 /* HistorialGlucosaPresion.swift */; };
 		F24368CD1CCC211500C280A6 /* TableViewControllerMedicamentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC218D21CC580E800C15C92 /* TableViewControllerMedicamentos.swift */; };
 		FB362DBA1CCA8095004426FE /* ViewControllerInformacionMed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB362DB91CCA8095004426FE /* ViewControllerInformacionMed.swift */; };
+		FB7C7A731CD9170B0065B4BF /* iphone5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7C7A6D1CD9170B0065B4BF /* iphone5.storyboard */; };
+		FB7C7A741CD9170B0065B4BF /* iphone6.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7C7A6F1CD9170B0065B4BF /* iphone6.storyboard */; };
 		FB80C4F41CD3B529008F4A33 /* ViewControllerNotificacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80C4F31CD3B529008F4A33 /* ViewControllerNotificacion.swift */; };
 		FB80C4F61CD3C100008F4A33 /* ViewControllerRegiGlucosa.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80C4F51CD3C100008F4A33 /* ViewControllerRegiGlucosa.swift */; };
 		FB80C4F81CD3C211008F4A33 /* TableViewControllerHistGlucosaPresion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80C4F71CD3C211008F4A33 /* TableViewControllerHistGlucosaPresion.swift */; };
@@ -42,6 +44,8 @@
 		69A0E9001CD5706500CDE876 /* HistorialGlucosaPresion+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HistorialGlucosaPresion+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		69A0E9011CD5706500CDE876 /* HistorialGlucosaPresion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialGlucosaPresion.swift; sourceTree = "<group>"; };
 		FB362DB91CCA8095004426FE /* ViewControllerInformacionMed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInformacionMed.swift; sourceTree = "<group>"; };
+		FB7C7A6E1CD9170B0065B4BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iphone5.storyboard; sourceTree = "<group>"; };
+		FB7C7A701CD9170B0065B4BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iphone6.storyboard; sourceTree = "<group>"; };
 		FB80C4F31CD3B529008F4A33 /* ViewControllerNotificacion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerNotificacion.swift; sourceTree = "<group>"; };
 		FB80C4F51CD3C100008F4A33 /* ViewControllerRegiGlucosa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRegiGlucosa.swift; sourceTree = "<group>"; };
 		FB80C4F71CD3C211008F4A33 /* TableViewControllerHistGlucosaPresion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerHistGlucosaPresion.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		FBC045681CB3158900D5E2EA /* AppMedicamentos */ = {
 			isa = PBXGroup;
 			children = (
+				FB7C7A6D1CD9170B0065B4BF /* iphone5.storyboard */,
+				FB7C7A6F1CD9170B0065B4BF /* iphone6.storyboard */,
 				FBC045691CB3158900D5E2EA /* AppDelegate.swift */,
 				FBC0456B1CB3158900D5E2EA /* ViewController.swift */,
 				FBC045861CB322EB00D5E2EA /* ViewControllerConfiguracion.swift */,
@@ -189,8 +195,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBC045771CB3158900D5E2EA /* LaunchScreen.storyboard in Resources */,
+				FB7C7A731CD9170B0065B4BF /* iphone5.storyboard in Resources */,
 				FBC045741CB3158900D5E2EA /* Assets.xcassets in Resources */,
 				FBC0456F1CB3158900D5E2EA /* Main.storyboard in Resources */,
+				FB7C7A741CD9170B0065B4BF /* iphone6.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +239,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FB7C7A6D1CD9170B0065B4BF /* iphone5.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB7C7A6E1CD9170B0065B4BF /* Base */,
+			);
+			name = iphone5.storyboard;
+			sourceTree = "<group>";
+		};
+		FB7C7A6F1CD9170B0065B4BF /* iphone6.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB7C7A701CD9170B0065B4BF /* Base */,
+			);
+			name = iphone6.storyboard;
+			sourceTree = "<group>";
+		};
 		FBC0456D1CB3158900D5E2EA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

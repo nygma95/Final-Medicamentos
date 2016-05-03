@@ -14,9 +14,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func setStoryboard()
+    {
+        //elige y muestra el storyboard que corresponda
+        let storyboard : UIStoryboard = self.grabStoryboard()
+        self.setInitialScreen (storyboard)
+    }
+    
+    func grabStoryboard() -> UIStoryboard
+    {
+        let screenHeight : Int = Int (UIScreen.mainScreen().bounds.size.height)
+        
+        var storyboard : UIStoryboard
+        
+        switch (screenHeight) //Elige storyboard
+        {
+            
+        case 568:
+            storyboard = UIStoryboard(name: "iphone5", bundle: nil) // 4 inch
+            
+        case 667:
+            storyboard = UIStoryboard(name: "iphone6", bundle: nil) // 4.7 inch
+            
+        case 736:
+            storyboard = UIStoryboard(name: "Main", bundle: nil) // 5.5 inch
+            
+        default:
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            
+        }
+        return storyboard
+    }
+
+    func setInitialScreen (storyboard : UIStoryboard)
+    {
+        var initViewController : UIViewController
+        
+        initViewController = storyboard.instantiateViewControllerWithIdentifier("first")
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = initViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        self.setStoryboard()
         //Actions
         var firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         firstAction.identifier = "First_Action"
