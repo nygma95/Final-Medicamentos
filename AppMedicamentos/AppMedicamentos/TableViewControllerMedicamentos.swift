@@ -255,6 +255,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         notification.category = "First_Cat"
         notification.alertBody = "Hora de tomar Medicamento"
         notification.fireDate = alarma
+        notification.repeatInterval = NSCalendarUnit.Minute
         notification.userInfo = ["nombre": medicina.nombre!]
         app.scheduleLocalNotification(notification)
         print("Se creo una alarma")

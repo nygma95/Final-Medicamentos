@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("estoy en app delegate" + NSDate().description)
             print (notification.description)
             NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil, userInfo: notification.userInfo)
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
         }
     }
     
