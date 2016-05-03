@@ -18,7 +18,8 @@ class ViewControllerConfiguracion: UIViewController {
     @IBOutlet weak var txtNombreAM: UITextField!
     @IBOutlet weak var txtApellidoAM: UITextField!
     @IBOutlet weak var btGuardar: UIButton!
-    @IBOutlet weak var botonNoUse: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var activeField : UITextField?
     
     var bEdit: Bool!
     var notifica: NSNotification!
@@ -28,6 +29,13 @@ class ViewControllerConfiguracion: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Configuración"
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerConfiguracion.quitaTeclado))
+        
+        self.view.addGestureRecognizer(tap)
+        
+        self.registrarseParaNotificacionesDeTeclado()
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerMedicamentos.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
@@ -63,6 +71,51 @@ class ViewControllerConfiguracion: UIViewController {
         }
     }
 
+    func quitaTeclado()
+    {
+        view.endEditing(true)
+    }
+    
+    private func registrarseParaNotificacionesDeTeclado() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerConfiguracion.keyboardWasShown(_:)),
+                                                         name:UIKeyboardWillShowNotification, object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerConfiguracion.keyboardWillBeHidden(_:)),
+                                                         name:UIKeyboardWillHideNotification, object:nil)
+    }
+    
+    func keyboardWasShown (aNotification : NSNotification )
+    {
+        let kbSize = aNotification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+        
+        let contentInset = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+        
+        var bkgndRect : CGRect = scrollView.frame
+        bkgndRect.size.height += kbSize.height;
+        activeField!.superview!.frame = bkgndRect;
+        scrollView.setContentOffset(CGPointMake(0.0, self.activeField!.frame.origin.y-kbSize.height), animated: true)
+    }
+    
+    func keyboardWillBeHidden (aNotification : NSNotification)
+    {
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsZero
+        scrollView.contentInset = contentInsets;
+        scrollView.scrollIndicatorInsets = contentInsets;
+    }
+    
+    func textFieldDidBeginEditing (textField : UITextField )
+    {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing (textField : UITextField )
+    {
+        activeField = nil
+    }
+
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
