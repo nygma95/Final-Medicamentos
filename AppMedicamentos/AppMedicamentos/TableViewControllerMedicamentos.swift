@@ -251,31 +251,25 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     
     func crearAlarma(medicina: Medicamento, alarma: NSDate)
     {
-        var notification : UILocalNotification = UILocalNotification()
+        let notification : UILocalNotification = UILocalNotification()
         notification.category = "First_Cat"
-        notification.alertBody = "Hora de tomar Medicamento"
+        notification.alertBody = "Hora de tomar " + medicina.nombre!
         notification.fireDate = alarma
         notification.repeatInterval = NSCalendarUnit.Minute
         notification.userInfo = ["nombre": medicina.nombre!]
         app.scheduleLocalNotification(notification)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(400, target: self, selector: #selector(TableViewControllerMedicamentos.pararNotificacion(_:)), userInfo: notification.userInfo, repeats: false)
         print("Se creo una alarma")
         print(notification.description)
+        print(timer.userInfo)
     }
     
     func moveSegue(notification : NSNotification) {
         bHayNotificacion = false
-        //let checa = NSDate()
-        //print("hora")
-        //print(checa)
         //let player: Medicamento!
         for player in listaMedicamentos
         {
             print("entro al FOR del handler")
-            //print(player.fecha)
-            //if player.fecha == checa
-            //print(player.nombre)
-            //print("hola")
-            //print(notification.description)
             let z:  [NSObject: AnyObject] = notification.userInfo!
             let x = z as NSDictionary
             let y = x["nombre"] as! String
@@ -288,6 +282,53 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             }
         }
         self.performSegueWithIdentifier("alarma", sender: nil)
+    }
+    
+    func pararNotificacion(timer: NSTimer) {
+        print("Stop")
+        let a = timer.userInfo! as! [NSObject : AnyObject]
+        let b = a as NSDictionary
+        let c = b["nombre"] as! String
+        let notificaciones = UIApplication.sharedApplication().scheduledLocalNotifications
+        for noti in notificaciones!
+        {
+            let z:  [NSObject: AnyObject] = noti.userInfo!
+            let x = z as NSDictionary
+            let y = x["nombre"] as! String
+            if y == c
+            {
+                UIApplication.sharedApplication().cancelLocalNotification(noti)
+                print("Stoped Stoped")
+                
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let entityDescription2 = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
+                
+                let request = NSFetchRequest()
+                request.entity = entityDescription2
+                
+                //el predicado es la consulta
+                let  predicado = NSPredicate(format: "nombre = %@", y)
+                
+                //agregar predicado a request
+                request.predicate = predicado
+                
+                var resultados : [Medicamento]?
+                
+                contexto.performBlockAndWait() {
+                    do {
+                        resultados = try! self.contexto.executeFetchRequest(request) as? [Medicamento]
+                    }
+                }
+                
+                print("fecha antes")
+                print(resultados![0].hora)
+                let nuevo = resultados![0].hora!.dateByAddingTimeInterval(3600*Double(resultados![0].periodo!))
+                resultados![0].hora = nuevo
+                appDelegate.saveContext()
+                crearAlarma(resultados![0], alarma: nuevo)
+                break
+            }
+        }
     }
     
     @IBAction func unwindAlarma(sender : UIStoryboardSegue)
