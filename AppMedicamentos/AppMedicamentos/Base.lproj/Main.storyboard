@@ -179,25 +179,6 @@
             </objects>
             <point key="canvasLocation" x="2021" y="60"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ps4-5S-iLZ">
-            <objects>
-                <viewController id="Mqd-9o-ZKB" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zgY-3s-iN3"/>
-                        <viewControllerLayoutGuide type="bottom" id="CIE-73-PSg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GQP-7R-2C3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="265-EI-hR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1946" y="452"/>
-        </scene>
         <!--Table View Controller Hist Medicamentos-->
         <scene sceneID="wfb-7d-tsI">
             <objects>
