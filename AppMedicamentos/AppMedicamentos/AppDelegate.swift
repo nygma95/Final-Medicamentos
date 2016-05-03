@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let categories: NSSet = NSSet(object: firstCategory)
         
         
-        let types: UIUserNotificationType = UIUserNotificationType.Badge
+        let types: UIUserNotificationType = UIUserNotificationType.Alert
         let mySettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
         UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
         

@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 protocol ProtocoloAgregarMedicamento {
-    func agregarMedicamento(nombre : String, cantidadDisp : Int, dosis : Int, periodo : Int, unidad : String , indicaciones : String, horaIni : NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!) -> Void
+    func agregarMedicamento(nombre : String, cantidadDisp : Int, dosis : Int, periodo : Int, unidad : String , indicaciones : String, horaIni : NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!, limite : NSDate) -> Void
     func quitaVista() -> Void
 }
 
 protocol ProtocoloEditarMedicamento {
-    func editarMedicamento(nombre : String, cantidadDisp : Int, dosis : Int, periodo : Int, unidad : String , indicaciones : String, horaIni : NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!) -> Void
+    func editarMedicamento(nombre : String, cantidadDisp : Int, dosis : Int, periodo : Int, unidad : String , indicaciones : String, horaIni : NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!, limite: NSDate) -> Void
     func quitaVistaE() -> Void
 }
 
@@ -114,10 +114,16 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             }
             let diaapartir = lbDiaPartir.text
             let indi = txtvIndicaciones.text
-            let hora = pickHora.date
+            var hora = pickHora.date
+            if diaapartir == "Mañana"
+            {
+                hora = hora.dateByAddingTimeInterval(24*3600.0)
+            }
+            var limit = hora
+            limit = limit.dateByAddingTimeInterval(Double(porxdias)*24*3600)
             let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
             
-            delegadoEditar!.editarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias)
+            delegadoEditar!.editarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
             delegadoEditar?.quitaVistaE()
         }
         else if bEditar == false
@@ -156,10 +162,16 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             }
             let diaapartir = lbDiaPartir.text
             let indi = txtvIndicaciones.text
-            let hora = pickHora.date
+            var hora = pickHora.date
+            if diaapartir == "Mañana"
+            {
+                hora = hora.dateByAddingTimeInterval(24*3600.0)
+            }
+            var limit = hora
+            limit = limit.dateByAddingTimeInterval(Double(porxdias)*24*3600)
             let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
             
-            delegadoAgregar!.agregarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias)
+            delegadoAgregar!.agregarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
             delegadoAgregar?.quitaVista()
         }
     }

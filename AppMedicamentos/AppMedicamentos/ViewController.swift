@@ -11,10 +11,19 @@ import UIKit
 class ViewController: UIViewController {
     
     var bFirst: Bool = false
+    var hayNotificacion : Bool = false
+    var notiAux: Bool = false
+    var notifica : NSNotification!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.moveSegue(_:)), name: "actionOnePressed", object: nil)
+        
+        if hayNotificacion
+        {
+            moveSegue(notifica!)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,13 +37,32 @@ class ViewController: UIViewController {
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-            if (segue.identifier == "configuracion")
+        if segue.identifier == "medicamentos"
+        {
+            if notiAux
             {
-                let view : ViewControllerConfiguracion = segue.destinationViewController as! ViewControllerConfiguracion
+                let tabla : TableViewControllerMedicamentos = segue.destinationViewController as! TableViewControllerMedicamentos
+                tabla.notifica = notifica
+                tabla.bHayNotificacion = true
+                
+                notiAux = false
+            }
+        }
+        else if (segue.identifier == "configuracion")
+        {
+            let view : ViewControllerConfiguracion = segue.destinationViewController as! ViewControllerConfiguracion
                 bFirst = isAppAlreadyLaunchedOnce()
                 view.bEdit = bFirst
-            }
+        }
+
      }
+    
+    func moveSegue(notificacion : NSNotification) {
+        notifica = notificacion
+        hayNotificacion = false
+        notiAux = true
+        performSegueWithIdentifier("medicamentos", sender: nil)
+    }
     
     @IBAction func unwindConfig(sender : UIStoryboardSegue)
     {

@@ -13,6 +13,8 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
 
     var listaMedicamentos = [Medicamento]()
     var aux: Medicamento!
+    var bHayNotificacion: Bool = false
+    var notifica : NSNotification!
     var indice: Int = 0
     
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -24,7 +26,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveSegue:", name: "actionOnePressed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerMedicamentos.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
         self.title = "Medicamentos Programados"
         
@@ -54,6 +56,10 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             for med : Medicamento in resultados!{
                 listaMedicamentos.append(med)
             }
+        }
+        if bHayNotificacion
+        {
+            moveSegue(notifica!)
         }
     }
 
@@ -136,6 +142,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             let viewA = segue.destinationViewController as! ViewControllerNotificacion
             viewA.medi = aux
             viewA.tabla = self
+            bHayNotificacion = false
         }
         else
         {
@@ -144,16 +151,11 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             view.bEditar = false
         }
     }
-    
-    @IBAction func unwindAlarma(sender : UIStoryboardSegue)
-    {
-        tableView.reloadData()
-    }
  
     
     // MARK: - Protocolos
     
-    func editarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int! ) {
+    func editarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!, limite : NSDate) {
         
         // hago el fetch del objeto medicamento
         let entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
@@ -188,6 +190,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         resultados![indice].foto = foto
         resultados![indice].diaaPartir = diaaPartir
         resultados![indice].porxDias = porxDias
+        resultados![indice].limite = limite
         
         appDelegate.saveContext()
         tableView.reloadData()
@@ -198,7 +201,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         navigationController?.popViewControllerAnimated(true)
     }
     
-    func agregarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int! ) {
+    func agregarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!, limite : NSDate) {
         
         let entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
         
@@ -216,6 +219,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             med.foto = foto
             med.diaaPartir = diaaPartir
             med.porxDias = porxDias
+            med.limite = limite
             aux = med
         }
         
@@ -258,10 +262,11 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     }
     
     func moveSegue(notification : NSNotification) {
-        let checa = NSDate()
-        print("hora")
-        print(checa)
-        let player: Medicamento!
+        bHayNotificacion = false
+        //let checa = NSDate()
+        //print("hora")
+        //print(checa)
+        //let player: Medicamento!
         for player in listaMedicamentos
         {
             print("entro al FOR del handler")
@@ -271,8 +276,8 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             //print("hola")
             //print(notification.description)
             let z:  [NSObject: AnyObject] = notification.userInfo!
-            var x = z as! NSDictionary
-            var y = x["nombre"] as! String
+            let x = z as NSDictionary
+            let y = x["nombre"] as! String
             //print (x)
             //if notification.userInfo!["nombre"]! as! String == player.nombre
             if y == player.nombre
@@ -283,5 +288,11 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         }
         self.performSegueWithIdentifier("alarma", sender: nil)
     }
+    
+    @IBAction func unwindAlarma(sender : UIStoryboardSegue)
+    {
+        tableView.reloadData()
+    }
+
     
 }

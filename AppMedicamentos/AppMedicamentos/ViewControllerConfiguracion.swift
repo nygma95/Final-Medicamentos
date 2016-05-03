@@ -18,15 +18,20 @@ class ViewControllerConfiguracion: UIViewController {
     @IBOutlet weak var txtNombreAM: UITextField!
     @IBOutlet weak var txtApellidoAM: UITextField!
     @IBOutlet weak var btGuardar: UIButton!
+    @IBOutlet weak var botonNoUse: UIButton!
     
     var bEdit: Bool!
+    var notifica: NSNotification!
     
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Configuración"
-        // Do any additional setup after loading the view.
+        botonNoUse.hidden = true
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerMedicamentos.moveSegue(_:)), name: "actionOnePressed", object: nil)
+        
         let entityDescription = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: contexto)
         
         let request = NSFetchRequest()
@@ -64,14 +69,26 @@ class ViewControllerConfiguracion: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func moveSegue(notificacion : NSNotification) {
+        notifica = notificacion
+        performSegueWithIdentifier("noti", sender: nil)
+        //hayNotificacion = true
+        
+    }
+    
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if sender as! UIButton == btGuardar
+        if segue.identifier == "noti"
+        {
+            let view = segue.destinationViewController as! ViewController
+            view.hayNotificacion = true
+            
+            view.notifica = notifica!
+        }
+        else if sender as! UIButton == btGuardar
         {
             let nomRes = txtNombreRes.text
             let apRes = txtApellidoRes.text

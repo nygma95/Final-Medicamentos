@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="psd-xB-NMN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="psd-xB-NMN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="89e-dd-BY9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Kgr-78-ppc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tomar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-FA-rnE">
@@ -75,12 +75,13 @@
                                 <state key="normal" title="Guardar"/>
                                 <connections>
                                     <action selector="actGuardar:" destination="RCm-IH-Y0O" eventType="touchUpInside" id="vIU-NL-Zkl"/>
-                                    <segue destination="Ey7-fB-8MR" kind="unwind" unwindAction="unwindAlarma:" id="AHy-tv-hqi"/>
+                                    <segue destination="Ey7-fB-8MR" kind="unwind" unwindAction="unwindAlarma:" id="TeO-Nd-rD4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="imgView" destination="bf4-Vb-he8" id="T1N-Bt-SJ0"/>
@@ -94,7 +95,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrB-O9-eyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ey7-fB-8MR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="945" y="2275"/>
+            <point key="canvasLocation" x="945" y="2216"/>
         </scene>
         <!--View Controller Historiales-->
         <scene sceneID="ME0-X7-bTN">
@@ -264,7 +265,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Medicamentos"/>
                                 <connections>
-                                    <segue destination="rMJ-oZ-BWh" kind="show" id="yJ9-Fh-HP6"/>
+                                    <segue destination="rMJ-oZ-BWh" kind="show" identifier="medicamentos" id="yJ9-Fh-HP6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eaa-58-dXQ">
@@ -358,7 +359,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="RCm-IH-Y0O" kind="presentation" identifier="alarma" id="lDr-I8-GUo"/>
+                        <segue destination="RCm-IH-Y0O" kind="show" identifier="alarma" id="lDr-I8-GUo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nwD-4h-dLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -460,7 +461,7 @@
                                 <rect key="frame" x="179" y="652" width="56" height="30"/>
                                 <state key="normal" title="Guardar"/>
                                 <connections>
-                                    <segue destination="Ewh-LD-fPl" kind="unwind" unwindAction="unwindConfig:" id="zDc-uy-LAM"/>
+                                    <segue destination="Ewh-LD-fPl" kind="unwind" identifier="unwindConfig" unwindAction="unwindConfig:" id="zDc-uy-LAM"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OrL-Gb-4Br">
@@ -468,12 +469,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRM-Bo-NCV">
+                                <rect key="frame" x="39" y="652" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="noti" id="wE8-bg-Tko"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Btx-UO-CNP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="botonNoUse" destination="cRM-Bo-NCV" id="Lb3-2k-J4G"/>
                         <outlet property="btGuardar" destination="Jfs-tS-KgT" id="3W5-lr-0sl"/>
                         <outlet property="txtApellidoAM" destination="isa-J6-QYu" id="fdX-Bu-uOe"/>
                         <outlet property="txtApellidoRes" destination="MqN-yD-ODb" id="iNJ-gd-gqH"/>
@@ -933,6 +942,7 @@
         <image name="camara" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8da-pN-kR4"/>
+        <segue reference="wE8-bg-Tko"/>
+        <segue reference="aXr-BY-pvV"/>
     </inferredMetricsTieBreakers>
 </document>
