@@ -461,7 +461,7 @@
                                 <rect key="frame" x="179" y="652" width="56" height="30"/>
                                 <state key="normal" title="Guardar"/>
                                 <connections>
-                                    <segue destination="Ewh-LD-fPl" kind="unwind" identifier="unwindConfig" unwindAction="unwindConfig:" id="zDc-uy-LAM"/>
+                                    <action selector="btGuardarDatos:" destination="zzv-kh-LBi" eventType="touchUpInside" id="7kZ-8u-LiO"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OrL-Gb-4Br">
@@ -469,20 +469,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRM-Bo-NCV">
-                                <rect key="frame" x="39" y="652" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="noti" id="wE8-bg-Tko"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Btx-UO-CNP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="botonNoUse" destination="cRM-Bo-NCV" id="Lb3-2k-J4G"/>
                         <outlet property="btGuardar" destination="Jfs-tS-KgT" id="3W5-lr-0sl"/>
                         <outlet property="txtApellidoAM" destination="isa-J6-QYu" id="fdX-Bu-uOe"/>
                         <outlet property="txtApellidoRes" destination="MqN-yD-ODb" id="iNJ-gd-gqH"/>
@@ -493,7 +485,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMl-gY-Dvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ewh-LD-fPl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1476" y="452"/>
         </scene>
@@ -942,7 +933,6 @@
         <image name="camara" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wE8-bg-Tko"/>
         <segue reference="aXr-BY-pvV"/>
     </inferredMetricsTieBreakers>
 </document>

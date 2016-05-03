@@ -28,7 +28,6 @@ class ViewControllerConfiguracion: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Configuración"
-        botonNoUse.hidden = true
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerMedicamentos.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
@@ -76,28 +75,25 @@ class ViewControllerConfiguracion: UIViewController {
         
     }
     
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "noti"
+    @IBAction func btGuardarDatos(sender: UIButton) {
+        if txtNombreRes.text == "" || txtApellidoRes.text == "" || txtTelefonoRes.text == "" || txtEmailRes.text == "" || txtNombreAM.text == "" || txtApellidoAM.text == ""
         {
-            let view = segue.destinationViewController as! ViewController
-            view.hayNotificacion = true
+            let alert = UIAlertController(title: "Falta información", message: "Por favor, llene todos los campos para continuar", preferredStyle: UIAlertControllerStyle.Alert)
             
-            view.notifica = notifica!
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        else if sender as! UIButton == btGuardar
+            
+        else
         {
+            
             let nomRes = txtNombreRes.text
             let apRes = txtApellidoRes.text
             let telef = txtTelefonoRes.text
             let em = txtEmailRes.text
             let nomAM = txtNombreAM.text
             let apAM = txtApellidoAM.text
-            
-            let view = segue.destinationViewController as! ViewController
             
             if bEdit!
             {
@@ -133,8 +129,9 @@ class ViewControllerConfiguracion: UIViewController {
                 resultados![0].telefono = telef!
                 
                 appDelegate.saveContext()
+                
             }
-
+            
             
             if !bEdit
             {
@@ -170,10 +167,19 @@ class ViewControllerConfiguracion: UIViewController {
                     }
                 }
                 bEdit = true
-                view.bFirst = bEdit
             }
             //
+                  navigationController?.popViewControllerAnimated(true)
         }
+        
+    }
+    
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
     }
     
 }

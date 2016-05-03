@@ -121,10 +121,20 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             }
             var limit = hora
             limit = limit.dateByAddingTimeInterval(Double(porxdias)*24*3600)
-            let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
-            
-            delegadoEditar!.editarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
-            delegadoEditar?.quitaVistaE()
+            if txtNombreMed.text == "" || txtCant.text == "" || txtDosis.text == "" || txtvIndicaciones.text == "" || imgFoto == nil
+            {
+                let alert = UIAlertController(title: "Falta información", message: "Por favor, llene todo los campos para continuar. Recuerde poner una foto del medicamento.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            else{
+                let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
+                
+                delegadoAgregar!.agregarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
+                delegadoAgregar?.quitaVista()
+            }
         }
         else if bEditar == false
         {
@@ -169,10 +179,22 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             }
             var limit = hora
             limit = limit.dateByAddingTimeInterval(Double(porxdias)*24*3600)
-            let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
             
-            delegadoAgregar!.agregarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
-            delegadoAgregar?.quitaVista()
+            if txtNombreMed.text == "" || txtCant.text == "" || txtDosis.text == "" || txtvIndicaciones.text == "" || imgFoto == nil
+            {
+                let alert = UIAlertController(title: "Falta información", message: "Por favor, llene todo los campos para continuar. Recuerde poner una foto del medicamento.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            else{
+                let dataFoto: NSData = UIImagePNGRepresentation(imgFoto)!
+                
+                delegadoAgregar!.agregarMedicamento(nom!, cantidadDisp: cDisp!, dosis: dosis!, periodo: per, unidad: tipo, indicaciones: indi!, horaIni: hora, foto: dataFoto, diaaPartir: diaapartir!, porxDias: porxdias, limite: limit)
+                delegadoAgregar?.quitaVista()
+            }
+
         }
     }
     
