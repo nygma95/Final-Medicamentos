@@ -28,7 +28,6 @@ class ViewControllerConfiguracion: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Configuración"
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerConfiguracion.quitaTeclado))
         
@@ -36,6 +35,18 @@ class ViewControllerConfiguracion: UIViewController {
         
         self.registrarseParaNotificacionesDeTeclado()
         
+        if !bEdit
+        {
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let alert = UIAlertController(title: "Responsable:", message: "Para comenzar registra tus datos y los del Adulto Mayor. Debes registrar ambos aunque seas la misma persona. Al terminar, presiona \"Guardar\"", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        self.title = "Configuración"
+
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerMedicamentos.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
@@ -222,8 +233,9 @@ class ViewControllerConfiguracion: UIViewController {
                     }
                 }
                 bEdit = true
+                navigationController?.setNavigationBarHidden(false, animated: false)
             }
-            //
+            // Fin del if
                   navigationController?.popViewControllerAnimated(true)
         }
         

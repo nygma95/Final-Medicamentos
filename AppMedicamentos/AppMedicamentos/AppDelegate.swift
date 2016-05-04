@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Actions
         var firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         firstAction.identifier = "First_Action"
-        firstAction.title = "First Action"
+        firstAction.title = "Registrar"
         firstAction.activationMode = UIUserNotificationActivationMode.Foreground
         firstAction.destructive = false
         firstAction.authenticationRequired = false
