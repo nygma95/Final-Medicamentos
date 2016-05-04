@@ -17,6 +17,9 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
     @IBOutlet weak var txtDosis: UITextField!
     @IBOutlet weak var btGuardar: UIButton!
     @IBOutlet weak var pickerUnidad: UIPickerView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var activeField : UITextField?
+    
     
     
     ///////////////Arreglo de Pickers
@@ -81,7 +84,7 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerMedicamentosAdicionales.quitaTeclado))
         
         self.view.addGestureRecognizer(tap)
-
+        self.registrarseParaNotificacionesDeTeclado()
         
     }
     
@@ -130,6 +133,46 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
         }
     }
     ////////////////////Pickers
+    
+    private func registrarseParaNotificacionesDeTeclado() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerMedicamentosAdicionales.keyboardWasShown(_:)),
+                                                         name:UIKeyboardWillShowNotification, object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerMedicamentosAdicionales.keyboardWillBeHidden(_:)),
+                                                         name:UIKeyboardWillHideNotification, object:nil)
+    }
+
+    
+    func keyboardWasShown (aNotification : NSNotification )
+    {
+        let kbSize = aNotification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+        
+        let contentInset = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+        
+        var bkgndRect : CGRect = scrollView.frame
+        bkgndRect.size.height += kbSize.height;
+        activeField!.superview!.frame = bkgndRect;
+        scrollView.setContentOffset(CGPointMake(0.0, self.activeField!.frame.origin.y-kbSize.height), animated: true)
+    }
+    
+    func keyboardWillBeHidden (aNotification : NSNotification)
+    {
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsZero
+        scrollView.contentInset = contentInsets;
+        scrollView.scrollIndicatorInsets = contentInsets;
+    }
+    
+    func textFieldDidBeginEditing (textField : UITextField )
+    {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing (textField : UITextField )
+    {
+        activeField = nil
+    }
+
 
     
 }
