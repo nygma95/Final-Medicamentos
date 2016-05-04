@@ -252,6 +252,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     func crearAlarma(medicina: Medicamento, alarma: NSDate)
     {
         let notification : UILocalNotification = UILocalNotification()
+        notification.soundName = UILocalNotificationDefaultSoundName
         notification.category = "First_Cat"
         notification.alertBody = "Hora de tomar " + medicina.nombre!
         notification.fireDate = alarma

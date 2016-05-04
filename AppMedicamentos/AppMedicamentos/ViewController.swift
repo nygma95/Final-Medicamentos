@@ -20,6 +20,10 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
+        if !isAppAlreadyLaunchedOnce()
+        {
+            performSegueWithIdentifier("configuracion", sender: 1)
+        }
         if hayNotificacion
         {
             moveSegue(notifica!)
@@ -51,8 +55,16 @@ class ViewController: UIViewController {
         else if (segue.identifier == "configuracion")
         {
             let view : ViewControllerConfiguracion = segue.destinationViewController as! ViewControllerConfiguracion
+            if (sender != nil)
+            {
+                bFirst = false
+                view.bEdit = bFirst
+            }
+            else
+            {
                 bFirst = isAppAlreadyLaunchedOnce()
                 view.bEdit = bFirst
+            }
         }
 
      }
