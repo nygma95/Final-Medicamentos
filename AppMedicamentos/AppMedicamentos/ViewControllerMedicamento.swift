@@ -30,6 +30,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var swDiaPartir: UISwitch!
     @IBOutlet weak var lbDiaPartir: UILabel!
     
+    
     // Switch que cambia el dia apartir (hoy o mañana)
     @IBAction func cambiarDia(sender: UISwitch) {
         
@@ -260,7 +261,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
         
         self.view.addGestureRecognizer(tap)
         
-        //self.registrarseParaNotificacionesDeTeclado()
+        self.registrarseParaNotificacionesDeTeclado()
         
         scrollView.contentSize = vieView.frame.size
         
@@ -433,6 +434,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
   
     func keyboardWasShown (aNotification : NSNotification )
     {
+        if activeField != nil{
         let kbSize = aNotification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
         
         let contentInset = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
@@ -443,6 +445,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
         bkgndRect.size.height += kbSize.height
         activeField!.superview!.frame = bkgndRect
         scrollView.setContentOffset(CGPointMake(0.0, self.activeField!.frame.origin.y-kbSize.height), animated: true)
+        }
     }
     
     func keyboardWillBeHidden (aNotification : NSNotification)

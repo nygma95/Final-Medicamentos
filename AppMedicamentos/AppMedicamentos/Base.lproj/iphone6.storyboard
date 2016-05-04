@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="psd-xB-NMN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="psd-xB-NMN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -526,81 +526,78 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aUH-G7-eFH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-hQ-joH">
-                                        <rect key="frame" x="8" y="46" width="363" height="1634"/>
+                                        <rect key="frame" x="8" y="48" width="359" height="1634"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camara" translatesAutoresizingMaskIntoConstraints="NO" id="DYq-fQ-KsX">
-                                                <rect key="frame" x="54" y="63" width="248" height="228"/>
+                                                <rect key="frame" x="50" y="63" width="248" height="228"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-pC-Ary">
-                                                <rect key="frame" x="25" y="335" width="91" height="21"/>
+                                                <rect key="frame" x="21" y="335" width="91" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dósis:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qU-zR-PVt">
-                                                <rect key="frame" x="25" y="493" width="56" height="21"/>
+                                                <rect key="frame" x="21" y="493" width="56" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cada" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-TG-tIi">
-                                                <rect key="frame" x="25" y="581" width="56" height="21"/>
+                                                <rect key="frame" x="21" y="581" width="56" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9g-dK-2N4">
-                                                <rect key="frame" x="116" y="330" width="191" height="30"/>
+                                                <rect key="frame" x="112" y="330" width="191" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="ytR-hv-cdo" id="IXR-JY-Mqr"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKx-ov-HYf">
-                                                <rect key="frame" x="310" y="269" width="22" height="22"/>
+                                                <rect key="frame" x="306" y="269" width="22" height="22"/>
                                                 <connections>
                                                     <action selector="selectImage:" destination="ytR-hv-cdo" eventType="touchUpInside" id="PY2-dN-irF"/>
                                                 </connections>
                                             </button>
                                             <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BeU-3Q-6gz">
-                                                <rect key="frame" x="84" y="548" width="211" height="108"/>
+                                                <rect key="frame" x="80" y="548" width="211" height="108"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Indicaciones:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeN-tz-GaG">
-                                                <rect key="frame" x="28" y="1067" width="169" height="21"/>
+                                                <rect key="frame" x="24" y="1067" width="169" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yrk-z1-54I">
-                                                <rect key="frame" x="25" y="1096" width="312" height="113"/>
-                                                <color key="backgroundColor" red="0.8274543271" green="0.93685746150000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmw-K8-kZf">
-                                                <rect key="frame" x="30" y="975" width="41" height="21"/>
+                                                <rect key="frame" x="26" y="975" width="41" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZBv-Iy-9E2">
-                                                <rect key="frame" x="79" y="936" width="161" height="99"/>
+                                                <rect key="frame" x="75" y="936" width="161" height="99"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="pastillas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huz-Zy-KZF">
-                                                <rect key="frame" x="159" y="494" width="104" height="21"/>
+                                                <rect key="frame" x="155" y="494" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A partir de:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZu-1M-4yc">
-                                                <rect key="frame" x="123" y="859" width="107" height="21"/>
+                                                <rect key="frame" x="119" y="859" width="107" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hnT-Gt-jIn">
-                                                <rect key="frame" x="53" y="854" width="51" height="31"/>
+                                                <rect key="frame" x="49" y="854" width="51" height="31"/>
                                                 <color key="onTintColor" red="1" green="0.85746001594909049" blue="0.60448354297510587" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="thumbTintColor" red="0.233564833" green="0.41711871690000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
@@ -608,47 +605,45 @@
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hoy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ir-am-2cB">
-                                                <rect key="frame" x="225" y="859" width="100" height="21"/>
+                                                <rect key="frame" x="221" y="859" width="100" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hora Inicial:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgl-Gg-ge1">
-                                                <rect key="frame" x="25" y="671" width="112" height="21"/>
+                                                <rect key="frame" x="21" y="671" width="112" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0XY-aV-fIf">
-                                                <rect key="frame" x="89" y="489" width="63" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cantidad disponible:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbm-FT-wQ2">
-                                                <rect key="frame" x="13" y="404" width="142" height="21"/>
+                                                <rect key="frame" x="9" y="404" width="142" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bPC-C6-VsS">
-                                                <rect key="frame" x="163" y="400" width="60" height="30"/>
+                                                <rect key="frame" x="159" y="400" width="60" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="ytR-hv-cdo" id="Isd-jV-6Y4"/>
+                                                </connections>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqj-At-i3y">
-                                                <rect key="frame" x="231" y="368" width="118" height="93"/>
+                                                <rect key="frame" x="227" y="368" width="118" height="93"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="ytR-hv-cdo" id="eOo-dM-viR"/>
                                                 </connections>
                                             </pickerView>
                                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="umG-0L-fYn">
-                                                <rect key="frame" x="25" y="708" width="312" height="120"/>
+                                                <rect key="frame" x="21" y="708" width="312" height="120"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="482704374.30002701">
                                                     <!--2016-04-18 20:32:54 +0000-->
                                                 </date>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxF-Tz-LO2">
-                                                <rect key="frame" x="117" y="1249" width="119" height="30"/>
+                                                <rect key="frame" x="113" y="1249" width="119" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <state key="normal" title="Guardar"/>
                                                 <connections>
@@ -656,11 +651,28 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medicamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0w-0i-gb2">
-                                                <rect key="frame" x="119" y="8" width="149" height="67"/>
+                                                <rect key="frame" x="115" y="8" width="149" height="67"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0XY-aV-fIf">
+                                                <rect key="frame" x="85" y="489" width="63" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="ytR-hv-cdo" id="nmJ-Gp-VRf"/>
+                                                </connections>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yrk-z1-54I">
+                                                <rect key="frame" x="21" y="1096" width="312" height="113"/>
+                                                <color key="backgroundColor" red="0.8274543271" green="0.93685746150000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="ytR-hv-cdo" id="Ru7-xI-NNY"/>
+                                                </connections>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -678,13 +690,13 @@
                         <outlet property="pickerDias" destination="ZBv-Iy-9E2" id="BVA-fF-5vy"/>
                         <outlet property="pickerHoras" destination="BeU-3Q-6gz" id="hU2-zu-cOh"/>
                         <outlet property="pickerUnidad" destination="tqj-At-i3y" id="Hq7-at-Sql"/>
-                        <outlet property="scrollView" destination="aUH-G7-eFH" id="kzg-k2-3vu"/>
+                        <outlet property="scrollView" destination="aUH-G7-eFH" id="CPD-WY-oxa"/>
                         <outlet property="swDiaPartir" destination="hnT-Gt-jIn" id="vqb-72-9Oj"/>
                         <outlet property="txtCant" destination="bPC-C6-VsS" id="a1e-Ty-ybz"/>
                         <outlet property="txtDosis" destination="0XY-aV-fIf" id="TCc-a7-P5v"/>
                         <outlet property="txtNombreMed" destination="V9g-dK-2N4" id="G4r-DK-EQY"/>
                         <outlet property="txtvIndicaciones" destination="yrk-z1-54I" id="Bgi-KM-hA7"/>
-                        <outlet property="vieView" destination="IjO-hQ-joH" id="i6G-EP-91E"/>
+                        <outlet property="vieView" destination="IjO-hQ-joH" id="5H6-Ra-9hw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUO-Mr-hK4" userLabel="First Responder" sceneMemberID="firstResponder"/>

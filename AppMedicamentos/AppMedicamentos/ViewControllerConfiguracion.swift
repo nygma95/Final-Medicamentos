@@ -85,6 +85,7 @@ class ViewControllerConfiguracion: UIViewController {
     
     func keyboardWasShown (aNotification : NSNotification )
     {
+        if activeField != txtNombreRes && activeField != txtApellidoRes && activeField != txtTelefonoRes && activeField != txtEmailRes{
         let kbSize = aNotification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
         
         let contentInset = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
@@ -95,6 +96,7 @@ class ViewControllerConfiguracion: UIViewController {
         bkgndRect.size.height += kbSize.height;
         activeField!.superview!.frame = bkgndRect;
         scrollView.setContentOffset(CGPointMake(0.0, self.activeField!.frame.origin.y-kbSize.height), animated: true)
+        }
     }
     
     func keyboardWillBeHidden (aNotification : NSNotification)
