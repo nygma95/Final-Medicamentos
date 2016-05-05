@@ -16,6 +16,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     var bHayNotificacion: Bool = false
     var notifica : NSNotification!
     var indice: Int = 0
+    var listaTimer = [NSTimer]()
     
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
@@ -51,8 +52,6 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         
         if resultados?.count > 0
         {
-            let iN = resultados?.count
-            let iNum = 0
             for med : Medicamento in resultados!{
                 listaMedicamentos.append(med)
             }
@@ -158,6 +157,35 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         resultados![indice].diaaPartir = diaaPartir
         resultados![indice].porxDias = porxDias
         resultados![indice].limite = limite
+       
+        for timer in listaTimer
+        {
+            let z:  [NSObject: AnyObject] = timer.userInfo! as! [NSObject : AnyObject]
+            let x = z as NSDictionary
+            let y = x["nombre"] as! String
+            if resultados![indice].nombre == y
+            {
+                print("detuvo timer "+y)
+                let i = listaTimer.indexOf(timer)
+                timer.invalidate()
+                listaTimer.removeAtIndex(i!)
+            }
+        }
+        
+        let notificaciones = UIApplication.sharedApplication().scheduledLocalNotifications
+        for noti in notificaciones!
+        {
+            let z:  [NSObject: AnyObject] = noti.userInfo!
+            let x = z as NSDictionary
+            let y = x["nombre"] as! String
+            if resultados![indice].nombre == y
+            {
+                UIApplication.sharedApplication().cancelLocalNotification(noti)
+                break
+            }
+        }
+        resultados![indice].nombre = nombre
+        crearAlarma(resultados![indice], alarma: resultados![indice].hora!)
         
         appDelegate.saveContext()
         tableView.reloadData()
@@ -232,8 +260,9 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         let elapsedTime = notification.fireDate?.timeIntervalSinceDate(acutal)
         let duration = Double(elapsedTime!)
         let timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(TableViewControllerMedicamentos.iniciaTimer(_:)), userInfo: notification.userInfo, repeats: false)
-        //print("Se creo una alarma")
-        //print(notification.description)
+        listaTimer.append(timer)
+        print("Se creo una alarma")
+        print(notification.description)
     }
     
     // Maneja una notificacion

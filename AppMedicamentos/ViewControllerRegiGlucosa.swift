@@ -25,12 +25,14 @@ class ViewControllerRegiGlucosa: UIViewController {
             lbInstruccion.text = "Registrar Glucosa"
             lbUnidad.text = "mg/dl"
             lbEjemplo.text = "Ejemplo: 80 mg/dl"
+            txtCantidad.text = ""
         }
         else
         {
             lbInstruccion.text = "Registrar Presión"
             lbUnidad.text = "mmHg"
             lbEjemplo.text = "Ejemplo: 120/80 mmHg"
+            txtCantidad.text = ""
         }
     }
         let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
