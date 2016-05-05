@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class TableViewControllerHistGlucosaPresion: UITableViewController {
-
+    // Arreglo Historial Glucosa/presion
     var listaRegistros = [HistorialGlucosaPresion]()
     var indice: Int = 0
     
@@ -41,7 +41,7 @@ class TableViewControllerHistGlucosaPresion: UITableViewController {
                 resultados = try! self.contexto.executeFetchRequest(request) as? [HistorialGlucosaPresion]
             }
         }
-        
+        // Querie que extrae los datos para desplegarlos en el tableview
         if resultados?.count > 0
         {
             let iN = resultados?.count
@@ -80,7 +80,7 @@ class TableViewControllerHistGlucosaPresion: UITableViewController {
         let date = listaRegistros[indexPath.row].fechaHora!
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year, .Hour, .Minute], fromDate: date)
-        
+        // Separa fecha y hora para poder concatenar los strings y ponerlos en el tableview
         let year =  String(components.year)
         let month = String(components.month)
         let day = String(components.day)

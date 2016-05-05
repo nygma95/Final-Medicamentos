@@ -12,7 +12,7 @@ import CoreData
 class TableViewControllerHistMedicamentos: UITableViewController {
     
 
-    
+    // Arreglo de objeto Historial Medicamento
     var listaMedicamentos = [HistorialMedicamentos]()
     var indice: Int = 0
     
@@ -43,7 +43,7 @@ class TableViewControllerHistMedicamentos: UITableViewController {
                 resultados = try! self.contexto.executeFetchRequest(request) as? [HistorialMedicamentos]
             }
         }
-        
+        // Se hace la querie para mostrar los datos en el table view
         if resultados?.count > 0
         {
             let iN = resultados?.count
@@ -81,7 +81,7 @@ class TableViewControllerHistMedicamentos: UITableViewController {
         let date = listaMedicamentos[indexPath.row].fechaHora!
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year, .Hour, .Minute], fromDate: date)
-        
+        // Separa los datos del NSDate para poder separarlos por hora y fecha y ponerlos en la celda
         let year =  String(components.year)
         let month = String(components.month)
         let day = String(components.day)

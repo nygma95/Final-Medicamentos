@@ -35,7 +35,7 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
         let dosis = txtDosis.text
         let fecha = NSDate()
         let unidad = arrUnidades[iOpcionUnidades]
-        
+        // Si estan vacios los campos, mostrara una alerta
         if nomMed == "" || dosis == ""
         {
             let alert = UIAlertController(title: "Falta información", message: "Por favor, llene todos los campos para continuar", preferredStyle: UIAlertControllerStyle.Alert)
@@ -45,6 +45,7 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
+            // Si no estan vacios, guarda los datos en el core data
         else{
         
         contexto.performBlockAndWait() {
@@ -77,10 +78,12 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // Despliega los contenidos del picker que estan en un arreglo
         pickerUnidad.delegate = self
         pickerUnidad.dataSource = self
         pickerUnidad.selectRow(0, inComponent: 0, animated: true)
         
+        //Codigo para que se recorra el view por cuestiones del tamaño del teclado
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerMedicamentosAdicionales.quitaTeclado))
         
         self.view.addGestureRecognizer(tap)
@@ -109,7 +112,7 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
         
     }
     
-    ////Pickers
+    ////Pickers, configuracion de los pickers
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
  
             return arrUnidades[row]
@@ -134,6 +137,7 @@ class ViewControllerMedicamentosAdicionales: UIViewController, UIPickerViewDeleg
     }
     ////////////////////Pickers
     
+    /////// Funciones del teclado
     private func registrarseParaNotificacionesDeTeclado() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerMedicamentosAdicionales.keyboardWasShown(_:)),
                                                          name:UIKeyboardWillShowNotification, object:nil)

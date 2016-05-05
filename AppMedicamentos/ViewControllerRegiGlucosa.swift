@@ -17,6 +17,7 @@ class ViewControllerRegiGlucosa: UIViewController {
     @IBOutlet weak var lbEjemplo: UILabel!
     @IBOutlet weak var txtCantidad: UITextField!
     
+    // Switch donde escoge si es registro de glucosa o presion arterial
     @IBAction func swSeleccion(sender: UISwitch) {
         
         if sender.on == true

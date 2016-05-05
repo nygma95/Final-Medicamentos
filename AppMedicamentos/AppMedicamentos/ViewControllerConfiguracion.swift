@@ -69,6 +69,8 @@ class ViewControllerConfiguracion: UIViewController {
             }
         }
         
+        //Si existen datos, extrae la información que se encuentra en el subindice 0, no se usarán más aparte de ese subindice
+        
         if resultados?.count > 0
         {
             print(resultados!.count)//imprime cuantos usuarios hay guardados, para verificar que sea 1
@@ -87,13 +89,14 @@ class ViewControllerConfiguracion: UIViewController {
         view.endEditing(true)
     }
     
+    // Funcion para cuando se utiliza el teclado mande una notificacion de uso
     private func registrarseParaNotificacionesDeTeclado() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerConfiguracion.keyboardWasShown(_:)),
                                                          name:UIKeyboardWillShowNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(ViewControllerConfiguracion.keyboardWillBeHidden(_:)),
                                                          name:UIKeyboardWillHideNotification, object:nil)
     }
-    
+    // Al hacer uso del teclado, se correra la pantalla hacia arriba para ver lo que se esta escribiendo
     func keyboardWasShown (aNotification : NSNotification )
     {
         if activeField != txtNombreRes && activeField != txtApellidoRes && activeField != txtTelefonoRes && activeField != txtEmailRes{
@@ -109,7 +112,7 @@ class ViewControllerConfiguracion: UIViewController {
         scrollView.setContentOffset(CGPointMake(0.0, self.activeField!.frame.origin.y-kbSize.height), animated: true)
         }
     }
-    
+    // Funcion para tapar el teclado
     func keyboardWillBeHidden (aNotification : NSNotification)
     {
         let contentInsets : UIEdgeInsets = UIEdgeInsetsZero
@@ -141,16 +144,19 @@ class ViewControllerConfiguracion: UIViewController {
         
     }
     
+    // Accion para guardar los datos
     @IBAction func btGuardarDatos(sender: UIButton) {
+        // Si los campos no estan llenos, mostrara una alerta de que debe llenarlos
         if txtNombreRes.text == "" || txtApellidoRes.text == "" || txtTelefonoRes.text == "" || txtEmailRes.text == "" || txtNombreAM.text == "" || txtApellidoAM.text == ""
         {
+            //Alerta
             let alert = UIAlertController(title: "Falta información", message: "Por favor, llene todos los campos para continuar", preferredStyle: UIAlertControllerStyle.Alert)
             
             // add the actions (buttons)
             alert.addAction(UIAlertAction(title: "Entendido", style: UIAlertActionStyle.Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-            
+            // Si no faltan datos, se guardan los datos en el core data
         else
         {
             
