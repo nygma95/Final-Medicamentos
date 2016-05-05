@@ -224,7 +224,10 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         notification.repeatInterval = NSCalendarUnit.Minute
         notification.userInfo = ["nombre": medicina.nombre!]
         app.scheduleLocalNotification(notification)
-        let timer = NSTimer.scheduledTimerWithTimeInterval(400, target: self, selector: #selector(TableViewControllerMedicamentos.pararNotificacion(_:)), userInfo: notification.userInfo, repeats: false)
+        let acutal = NSDate()
+        let elapsedTime = notification.fireDate?.timeIntervalSinceDate(acutal)
+        let duration = Double(elapsedTime!)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(TableViewControllerMedicamentos.iniciaTimer(_:)), userInfo: notification.userInfo, repeats: false)
         print("Se creo una alarma")
         print(notification.description)
         print(timer.userInfo)
@@ -248,6 +251,11 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             }
         }
         self.performSegueWithIdentifier("alarma", sender: nil)
+    }
+    
+    func iniciaTimer(timer: NSTimer) {
+        print("inicio cuenta limite")
+        let timer = NSTimer.scheduledTimerWithTimeInterval(400, target: self, selector: #selector(TableViewControllerMedicamentos.pararNotificacion(_:)), userInfo: timer.userInfo, repeats: false)
     }
     
     func pararNotificacion(timer: NSTimer) {
