@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="psd-xB-NMN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="psd-xB-NMN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -245,17 +245,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-hq-nCD">
-                                <rect key="frame" x="118" y="370" width="178" height="30"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Registrar Glucosa/Presión">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-hq-nCD">
+                                <rect key="frame" x="97" y="370" width="221" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Registrar Glucosa/Presión"/>
                                 <connections>
                                     <segue destination="VNv-ub-TaC" kind="show" id="Egs-i2-ikb"/>
                                 </connections>
@@ -273,11 +266,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Configuración"/>
                                 <connections>
-                                    <segue destination="zzv-kh-LBi" kind="push" identifier="configuracion" id="ydZ-7l-CUW"/>
+                                    <segue destination="zzv-kh-LBi" kind="show" identifier="configuracion" id="ydZ-7l-CUW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-Gt-SrN">
-                                <rect key="frame" x="99" y="281" width="217" height="34"/>
+                                <rect key="frame" x="99" y="277" width="217" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Medicamentos Adicionales"/>
                                 <connections>
@@ -291,7 +284,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7s-qa-rUa">
-                                <rect key="frame" x="175" y="456" width="67" height="34"/>
+                                <rect key="frame" x="175" y="458" width="67" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Historial"/>
                                 <connections>
@@ -981,6 +974,6 @@
         <image name="camara" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8da-pN-kR4"/>
+        <segue reference="aXr-BY-pvV"/>
     </inferredMetricsTieBreakers>
 </document>

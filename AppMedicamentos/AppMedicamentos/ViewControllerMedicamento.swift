@@ -80,7 +80,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func btnGuardar(sender: UIButton) {
         
         if bEditar!
-        {
+        {// Si esta editando un Medicamento
             let nom = txtNombreMed.text
             let cDisp = Int(txtCant.text!)
             let dosis = Int(txtDosis.text!)
@@ -138,7 +138,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             }
         }
         else if bEditar == false
-        {
+        {// Si esta agregando un Medicamento
             let nom = txtNombreMed.text
             let cDisp = Int(txtCant.text!)
             let dosis = Int(txtDosis.text!)
@@ -287,7 +287,7 @@ class ViewControllerMedicamento: UIViewController, UIPickerViewDelegate, UIPicke
             }
             
             if resultados?.count > 0
-            {
+            {// Mostrar datos de Medicamento a editar
                 txtNombreMed.text = resultados![indice].nombre
                 imgFoto = UIImage(data: resultados![indice].foto!)
                 imgMedicamento.image = imgFoto

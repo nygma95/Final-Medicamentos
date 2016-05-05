@@ -23,10 +23,12 @@ class ViewController: UIViewController {
         bFirst = isAppAlreadyLaunchedOnce()
         if !bFirst
         {
+            // si App corre por primera vez
             performSegueWithIdentifier("configuracion", sender: nil)
         }
         if hayNotificacion
         {
+            // si hay notificacion
             moveSegue(notifica!)
         }
     }
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
         if segue.identifier == "medicamentos"
         {
             if notiAux
-            {
+            {//si hay notificacion
                 let tabla : TableViewControllerMedicamentos = segue.destinationViewController as! TableViewControllerMedicamentos
                 tabla.notifica = notifica
                 tabla.bHayNotificacion = true
@@ -62,6 +64,7 @@ class ViewController: UIViewController {
 
      }
     
+    //maneja notificacion
     func moveSegue(notificacion : NSNotification) {
         notifica = notificacion
         hayNotificacion = false
@@ -74,6 +77,7 @@ class ViewController: UIViewController {
         
     }
     
+    // Checa si el App corre por primera vez
     func isAppAlreadyLaunchedOnce()->Bool{
         let defaults = NSUserDefaults.standardUserDefaults()
         

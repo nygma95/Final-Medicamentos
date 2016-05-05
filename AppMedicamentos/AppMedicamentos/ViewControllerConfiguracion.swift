@@ -21,7 +21,7 @@ class ViewControllerConfiguracion: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var activeField : UITextField?
     
-    var bEdit: Bool!
+    var bEdit: Bool!// checa si el usuario va a editar
     var notifica: NSNotification!
     
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -36,7 +36,7 @@ class ViewControllerConfiguracion: UIViewController {
         self.registrarseParaNotificacionesDeTeclado()
         
         if !bEdit
-        {
+        {// Si es la primera vez que el usuario entra
             navigationController?.setNavigationBarHidden(true, animated: false)
             let alert = UIAlertController(title: "Responsable:", message: "Para comenzar registra tus datos y los del Adulto Mayor. Debes registrar ambos aunque seas la misma persona. Al terminar, presiona \"Guardar\"", preferredStyle: UIAlertControllerStyle.Alert)
             
@@ -47,7 +47,7 @@ class ViewControllerConfiguracion: UIViewController {
         
         self.title = "Configuración"
 
-        
+        // Observador de notificaciones
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerMedicamentos.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
         let entityDescription = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: contexto)
@@ -168,8 +168,7 @@ class ViewControllerConfiguracion: UIViewController {
             let apAM = txtApellidoAM.text
             
             if bEdit!
-            {
-                print("NO First time NO")
+            {// si noe es primera vez
                 // hago el fetch del objeto usuario
                 let entityDescription = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: contexto)
                 
@@ -192,22 +191,21 @@ class ViewControllerConfiguracion: UIViewController {
                 
                 
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                
+                // asigno datos
                 resultados![0].nombreResponsable = nomRes!
                 resultados![0].apellidoResponsable = apRes!
                 resultados![0].nombreUsuario = nomAM!
                 resultados![0].apellidoUsuario = apAM!
                 resultados![0].email = em!
                 resultados![0].telefono = telef!
-                
+                // Guardar datos
                 appDelegate.saveContext()
                 
             }
             
             
             if !bEdit
-            {
-                print("First time")
+            {// Sies primera vez
                 let entityDescription = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: contexto)
                 
                 if nomRes == nil || nomAM == nil || apRes == nil

@@ -37,13 +37,13 @@ class TableViewControllerHistMedicamentos: UITableViewController {
         request.predicate = predicado
         
         var resultados : [HistorialMedicamentos]?
-        
+        // Se hace la querie para mostrar los datos en el table view
         contexto.performBlockAndWait() {
             do {
                 resultados = try! self.contexto.executeFetchRequest(request) as? [HistorialMedicamentos]
             }
         }
-        // Se hace la querie para mostrar los datos en el table view
+        
         if resultados?.count > 0
         {
             let iN = resultados?.count

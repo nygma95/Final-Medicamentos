@@ -95,8 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         if identifier == "First_Action"
         {
-            print("estoy en app delegate" + NSDate().description)
-            print (notification.description)
+            //print("estoy en app delegate" + NSDate().description)
+            //print (notification.description)
             NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil, userInfo: notification.userInfo)
             UIApplication.sharedApplication().cancelLocalNotification(notification)
         }

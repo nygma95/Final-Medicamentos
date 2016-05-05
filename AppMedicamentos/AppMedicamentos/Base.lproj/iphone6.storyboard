@@ -245,17 +245,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-hq-nCD">
-                                <rect key="frame" x="98" y="368" width="178" height="30"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Registrar Glucosa/Presión">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-hq-nCD">
+                                <rect key="frame" x="81" y="367" width="214" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Registrar Glucosa/Presión"/>
                                 <connections>
                                     <segue destination="VNv-ub-TaC" kind="show" id="Egs-i2-ikb"/>
                                 </connections>
@@ -273,11 +266,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Configuración"/>
                                 <connections>
-                                    <segue destination="zzv-kh-LBi" kind="push" identifier="configuracion" id="ydZ-7l-CUW"/>
+                                    <segue destination="zzv-kh-LBi" kind="show" identifier="configuracion" id="ydZ-7l-CUW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-Gt-SrN">
-                                <rect key="frame" x="79" y="279" width="217" height="34"/>
+                                <rect key="frame" x="79" y="276" width="217" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Medicamentos Adicionales"/>
                                 <connections>
@@ -291,7 +284,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7s-qa-rUa">
-                                <rect key="frame" x="155" y="454" width="67" height="34"/>
+                                <rect key="frame" x="155" y="458" width="67" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Historial"/>
                                 <connections>
@@ -306,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="426"/>
+            <point key="canvasLocation" x="944.5" y="425.5"/>
         </scene>
         <!--Table View Controller Medicamentos-->
         <scene sceneID="1gQ-qi-U6f">

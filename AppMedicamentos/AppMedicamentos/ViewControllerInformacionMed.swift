@@ -50,7 +50,7 @@ class ViewControllerInformacionMed: UIViewController {
         }
         
         if resultados?.count > 0
-        {
+        {// muestra datos
             self.title = resultados![indice].nombre
             imagen = UIImage(data: resultados![indice].foto!)
             imgFoto.image = imagen

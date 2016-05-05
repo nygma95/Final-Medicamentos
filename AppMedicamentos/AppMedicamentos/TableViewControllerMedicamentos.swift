@@ -57,6 +57,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
                 listaMedicamentos.append(med)
             }
         }
+        // Si llega notificacion desde otro ViewController
         if bHayNotificacion
         {
             moveSegue(notifica!)
@@ -95,7 +96,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "muestra"
-        {
+        {// pantalla para ver un Medicamento
             let viewM = segue.destinationViewController as! ViewControllerInformacionMed
             let indexPath = tableView.indexPathForSelectedRow
             viewM.indice = indexPath!.row
@@ -103,14 +104,14 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
             indice = indexPath!.row
         }
         else if segue.identifier == "alarma"
-        {
+        {// pantalla para registrar Toma de Medicamento
             let viewA = segue.destinationViewController as! ViewControllerNotificacion
             viewA.medi = aux
             viewA.tabla = self
             bHayNotificacion = false
         }
         else
-        {
+        {// pantalla para agregar medicamento
             let view = segue.destinationViewController as! ViewControllerMedicamento
             view.delegadoAgregar = self
             view.bEditar = false
@@ -120,6 +121,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     
     // MARK: - Protocolos
     
+    // Guarda datos de Medicamento editado
     func editarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!, limite : NSDate) {
         
         // hago el fetch del objeto medicamento
@@ -166,6 +168,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         navigationController?.popViewControllerAnimated(true)
     }
     
+    // Guarda nuevo Medicamento
     func agregarMedicamento(nombre: String, cantidadDisp: Int, dosis: Int, periodo: Int, unidad: String, indicaciones: String, horaIni: NSDate, foto: NSData, diaaPartir : String!, porxDias : Int!, limite : NSDate) {
         
         let entityDescription = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
@@ -214,6 +217,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
     
     // Notificaciones
     
+    // Crea y programa Notificacion
     func crearAlarma(medicina: Medicamento, alarma: NSDate)
     {
         let notification : UILocalNotification = UILocalNotification()
@@ -228,11 +232,11 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         let elapsedTime = notification.fireDate?.timeIntervalSinceDate(acutal)
         let duration = Double(elapsedTime!)
         let timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(TableViewControllerMedicamentos.iniciaTimer(_:)), userInfo: notification.userInfo, repeats: false)
-        print("Se creo una alarma")
-        print(notification.description)
-        print(timer.userInfo)
+        //print("Se creo una alarma")
+        //print(notification.description)
     }
     
+    // Maneja una notificacion
     func moveSegue(notification : NSNotification) {
         bHayNotificacion = false
         //let player: Medicamento!
@@ -253,11 +257,13 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         self.performSegueWithIdentifier("alarma", sender: nil)
     }
     
+    // Timer repeticiones de una Notificacion
     func iniciaTimer(timer: NSTimer) {
         print("inicio cuenta limite")
         let timer = NSTimer.scheduledTimerWithTimeInterval(400, target: self, selector: #selector(TableViewControllerMedicamentos.pararNotificacion(_:)), userInfo: timer.userInfo, repeats: false)
     }
     
+    // Borra una Notificacion
     func pararNotificacion(timer: NSTimer) {
         print("Stop")
         let a = timer.userInfo! as! [NSObject : AnyObject]
@@ -305,6 +311,7 @@ class TableViewControllerMedicamentos: UITableViewController, ProtocoloAgregarMe
         }
     }
     
+    // Actualiza datos luego de registrar toma de medicamento
     @IBAction func unwindAlarma(sender : UIStoryboardSegue)
     {
         tableView.reloadData()

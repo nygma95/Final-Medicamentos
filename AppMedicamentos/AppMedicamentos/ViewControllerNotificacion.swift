@@ -26,6 +26,7 @@ class ViewControllerNotificacion: UIViewController {
     
     let contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
+    // Switch medicamento tomado o no tomado
     @IBAction func actionSwitch(sender: UISwitch) {
         if sender.on
         {
@@ -39,6 +40,7 @@ class ViewControllerNotificacion: UIViewController {
         }
     }
     
+    // Guarda el registro
     @IBAction func actGuardar(sender: UIButton) {
         
         let entityDescription2 = NSEntityDescription.entityForName("Medicamento", inManagedObjectContext: contexto)
@@ -72,7 +74,7 @@ class ViewControllerNotificacion: UIViewController {
         
         
         if tomado
-        {
+        {// Si tomó medicamento, actualiza datos
             var entityDescription = NSEntityDescription.entityForName("HistorialMedicamentos", inManagedObjectContext: contexto)
             
             let nomMed = medi.nombre
@@ -108,9 +110,13 @@ class ViewControllerNotificacion: UIViewController {
             }
             
             resultados![0].cantDisp = Int(resultados![0].cantDisp!) - Int(resultados![0].dosis!)
+            if Int(resultados![0].cantDisp!) < 0
+            {
+                resultados![0].cantDisp = 0
+            }
         }
-        appDelegate.saveContext()
-        
+        appDelegate.saveContext()// Guarda cambios
+        // Programa siguiente notificacion
         tabla.crearAlarma(medi, alarma: nuevo)
         navigationController?.setNavigationBarHidden(false, animated: false)
         //navigationController?.popViewControllerAnimated(true)
