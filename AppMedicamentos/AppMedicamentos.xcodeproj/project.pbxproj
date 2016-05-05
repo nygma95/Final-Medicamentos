@@ -28,8 +28,6 @@
 		FBC045771CB3158900D5E2EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBC045751CB3158900D5E2EA /* LaunchScreen.storyboard */; };
 		FBC045821CB31C6E00D5E2EA /* Medicamento+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC0457E1CB31C6E00D5E2EA /* Medicamento+CoreDataProperties.swift */; };
 		FBC045831CB31C6E00D5E2EA /* Medicamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC0457F1CB31C6E00D5E2EA /* Medicamento.swift */; };
-		FBC045841CB31C6E00D5E2EA /* Alarma+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC045801CB31C6E00D5E2EA /* Alarma+CoreDataProperties.swift */; };
-		FBC045851CB31C6E00D5E2EA /* Alarma.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC045811CB31C6E00D5E2EA /* Alarma.swift */; };
 		FBC045871CB322EB00D5E2EA /* ViewControllerConfiguracion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC045861CB322EB00D5E2EA /* ViewControllerConfiguracion.swift */; };
 		FBC0458A1CB324D300D5E2EA /* Usuario+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC045881CB324D300D5E2EA /* Usuario+CoreDataProperties.swift */; };
 		FBC0458B1CB324D300D5E2EA /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC045891CB324D300D5E2EA /* Usuario.swift */; };
@@ -61,8 +59,6 @@
 		FBC045781CB3158900D5E2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBC0457E1CB31C6E00D5E2EA /* Medicamento+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicamento+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBC0457F1CB31C6E00D5E2EA /* Medicamento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medicamento.swift; sourceTree = "<group>"; };
-		FBC045801CB31C6E00D5E2EA /* Alarma+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alarma+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FBC045811CB31C6E00D5E2EA /* Alarma.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarma.swift; sourceTree = "<group>"; };
 		FBC045861CB322EB00D5E2EA /* ViewControllerConfiguracion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerConfiguracion.swift; sourceTree = "<group>"; };
 		FBC045881CB324D300D5E2EA /* Usuario+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Usuario+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBC045891CB324D300D5E2EA /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
@@ -95,8 +91,6 @@
 				FBC045891CB324D300D5E2EA /* Usuario.swift */,
 				FBC0457E1CB31C6E00D5E2EA /* Medicamento+CoreDataProperties.swift */,
 				FBC0457F1CB31C6E00D5E2EA /* Medicamento.swift */,
-				FBC045801CB31C6E00D5E2EA /* Alarma+CoreDataProperties.swift */,
-				FBC045811CB31C6E00D5E2EA /* Alarma.swift */,
 				FBC045681CB3158900D5E2EA /* AppMedicamentos */,
 				FBC045671CB3158900D5E2EA /* Products */,
 			);
@@ -212,7 +206,6 @@
 			files = (
 				FB80C4FA1CD3C766008F4A33 /* CellView.swift in Sources */,
 				FB362DBA1CCA8095004426FE /* ViewControllerInformacionMed.swift in Sources */,
-				FBC045851CB31C6E00D5E2EA /* Alarma.swift in Sources */,
 				FBB0D7761CC9790900B24FEB /* ViewControllerMedicamentosAdicionales.swift in Sources */,
 				FBC045821CB31C6E00D5E2EA /* Medicamento+CoreDataProperties.swift in Sources */,
 				69A0E9031CD5706500CDE876 /* HistorialGlucosaPresion.swift in Sources */,
@@ -220,7 +213,6 @@
 				FBC0456C1CB3158900D5E2EA /* ViewController.swift in Sources */,
 				FBC045831CB31C6E00D5E2EA /* Medicamento.swift in Sources */,
 				F24368CD1CCC211500C280A6 /* TableViewControllerMedicamentos.swift in Sources */,
-				FBC045841CB31C6E00D5E2EA /* Alarma+CoreDataProperties.swift in Sources */,
 				69A0E8FF1CD30A2400CDE876 /* TableViewControllerHistMedicamentos.swift in Sources */,
 				FB80C4F61CD3C100008F4A33 /* ViewControllerRegiGlucosa.swift in Sources */,
 				FBDC8E9E1CCEBEA3007344E9 /* HistorialMedicamentos+CoreDataProperties.swift in Sources */,

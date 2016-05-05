@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
-    <entity name="Alarma" representedClassName=".Alarma" syncable="YES">
-        <attribute name="dateTime" attributeType="Date" syncable="YES"/>
-        <attribute name="tomado" attributeType="Boolean" syncable="YES"/>
-    </entity>
     <entity name="HistorialGlucosaPresion" representedClassName=".HistorialGlucosaPresion" syncable="YES">
         <attribute name="cantidad" attributeType="String" syncable="YES"/>
         <attribute name="fechaHora" attributeType="Date" syncable="YES"/>
@@ -36,7 +32,6 @@
         <attribute name="telefono" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Alarma" positionX="-36" positionY="72" width="128" height="73"/>
         <element name="HistorialGlucosaPresion" positionX="-252" positionY="171" width="128" height="90"/>
         <element name="HistorialMedicamentos" positionX="-252" positionY="171" width="128" height="90"/>
         <element name="Medicamento" positionX="-459" positionY="81" width="128" height="210"/>
