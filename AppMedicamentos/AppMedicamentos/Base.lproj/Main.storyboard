@@ -109,20 +109,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gRb-Uv-iWT">
-                                <rect key="frame" x="47" y="412" width="320" height="133"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Historial Glucosa/Presión Arterial"/>
-                                <connections>
-                                    <segue destination="EJk-cW-l2n" kind="show" id="RWp-ki-LjB"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zE2-X6-LCb">
-                                <rect key="frame" x="74" y="234" width="267" height="88"/>
+                                <rect key="frame" x="74" y="221" width="267" height="88"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Historial Medicamentos"/>
                                 <connections>
                                     <segue destination="R8f-XJ-xAc" kind="show" id="7uf-HL-p4j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gRb-Uv-iWT">
+                                <rect key="frame" x="38" y="395" width="338" height="133"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Historial Glucosa/Presión Arterial"/>
+                                <connections>
+                                    <segue destination="EJk-cW-l2n" kind="show" id="RWp-ki-LjB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -246,49 +246,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZj-hq-nCD">
-                                <rect key="frame" x="97" y="370" width="221" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <rect key="frame" x="87" y="351" width="264" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="Registrar Glucosa/Presión"/>
                                 <connections>
                                     <segue destination="VNv-ub-TaC" kind="show" id="Egs-i2-ikb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWp-eX-2SR">
-                                <rect key="frame" x="148" y="178" width="120" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="130" y="142" width="155" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Medicamentos"/>
                                 <connections>
                                     <segue destination="rMJ-oZ-BWh" kind="show" identifier="medicamentos" id="yJ9-Fh-HP6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eaa-58-dXQ">
-                                <rect key="frame" x="151" y="553" width="114" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Configuración"/>
-                                <connections>
-                                    <segue destination="zzv-kh-LBi" kind="show" identifier="configuracion" id="ydZ-7l-CUW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-Gt-SrN">
-                                <rect key="frame" x="99" y="277" width="217" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="85" y="244" width="268" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Medicamentos Adicionales"/>
                                 <connections>
                                     <segue destination="0PW-FV-wqD" kind="show" id="Eir-lZ-mCy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menú" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFG-Kr-HFz">
-                                <rect key="frame" x="170" y="84" width="75" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7s-qa-rUa">
-                                <rect key="frame" x="175" y="458" width="67" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="161" y="466" width="92" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Historial"/>
                                 <connections>
                                     <segue destination="PvW-FW-BYu" kind="show" id="lI2-1n-Taq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eaa-58-dXQ">
+                                <rect key="frame" x="137" y="576" width="141" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Configuración"/>
+                                <connections>
+                                    <segue destination="zzv-kh-LBi" kind="show" identifier="configuracion" id="ydZ-7l-CUW"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Menú"
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.moveSegue(_:)), name: "actionOnePressed", object: nil)
         
         bFirst = isAppAlreadyLaunchedOnce()
